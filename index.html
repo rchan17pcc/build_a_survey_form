@@ -1,0 +1,437 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+:root {
+  --color-white: #ffffff;
+  --color-darkblue: #1b1b32;
+  --color-darkgray-alpha: rgba(116, 111, 111, 0.8);
+  --color-gold: #c2a608;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-white);
+  margin: 0;
+}
+
+/* mobile friendly alternative to using background-attachment: fixed */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: var(--color-darkblue);
+  background-image: linear-gradient(
+      115deg,
+      rgba(92, 86, 88, 0.8),
+      rgba(92, 86, 87, 0.7)
+    ),
+    url(https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1.125rem;
+}
+
+h1,
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  border: none;
+}
+
+.container {
+  width: 100%;
+  margin: 3.125rem auto 0 auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+.header {
+  padding: 0 0.625rem;
+  margin-bottom: 1.875rem;
+}
+
+.description {
+  font-style: italic;
+  font-weight: 200;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.clue {
+  margin-left: 0.25rem;
+  font-size: 0.9rem;
+  color: #e4e4e4;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* form */
+
+form {
+  background: var(--color-darkgray-alpha);
+  padding: 2.5rem 0.625rem;
+  border-radius: 0.25rem;
+}
+
+@media (min-width: 480px) {
+  form {
+    padding: 2.5rem;
+  }
+}
+
+.form-group {
+  margin: 0 auto 1.25rem auto;
+  padding: 0.25rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 2.375rem;
+  padding: 0.375rem 0.75rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-radio,
+.input-checkbox {
+  display: inline-block;
+  margin-right: 0.625rem;
+  min-height: 1.25rem;
+  min-width: 1.25rem;
+}
+
+.input-textarea {
+  min-height: 120px;
+  width: 100%;
+  padding: 0.625rem;
+  resize: vertical;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--color-gold);
+  color: inherit;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      Responsive Web Design ProjectsTutorial 6
+      Build a Survey Form
+
+      Author: Ricky Chan
+      Date:   1/29/2021
+
+      Filename: Build a Survey Form.html
+
+   -->
+
+   <link href="survey_form_styles.css" rel="stylesheet" />
+
+<div class="container">
+    <header class="header">
+      <h1 id="title" class="text-center">Customer Satisfaction Survey</h1>
+      <p id="description" class="description text-center">
+        Your feedback is highly appreciated and will help us to improve our website
+      </p>
+    </header>
+    <form id="survey-form">
+      <div class="form-group">
+        <label id="name-label" for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="form-control"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label id="email-label" for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          placeholder="Enter your Email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label id="number-label" for="number"
+          >Age<span class="clue">(optional)</span></label
+        >
+        <input
+          type="number"
+          name="age"
+          id="number"
+          min="10"
+          max="99"
+          class="form-control"
+          placeholder="Age"
+        />
+      </div>
+      <div class="form-group">
+        <p>Which option best describes your profession?</p>
+        <select id="dropdown" name="role" class="form-control" required>
+          <option disabled selected value>Select current profession</option>
+          <option value="student">Student</option>
+          <option value="job">Management</option>
+          <option value="learner">Technical Specialist</option>
+          <option value="preferNo">Prefer not to say</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <p>Which of the following words would you use to describe our product?</p>
+        <label>
+          <input
+            name="user-recommend"
+            value="Buggy"
+            type="radio"
+            class="input-radio"
+            checked
+          />Buggy</label
+        >
+        <label>
+          <input
+            name="user-recommend"
+            value="Fine, but there are some issues"
+            type="radio"
+            class="input-radio"
+          />Fine, but there are some issues</label
+        >
+  
+        <label
+          ><input
+            name="user-recommend"
+            value="Great"
+            type="radio"
+            class="input-radio"
+          />Great</label
+        >
+      </div>
+  
+      <div class="form-group">
+        <p>
+            How well does our product meet your needs?
+        </p>
+        <select id="most-like" name="mostLike" class="form-control" required>
+          <option disabled selected value>Select an option</option>
+          <option value="Badly">Badly</option>
+          <option value="Fine">Fine</option>
+          <option value="Well">Well</option>
+          <option value="Very well">Very well</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <p>
+            How easy is it to navigate our website?
+        </p>
+        <select id="most-like" name="mostLike" class="form-control" required>
+          <option disabled selected value>Select an option</option>
+          <option value="Extremely easy">Extremely easy</option>
+          <option value="Easy">Easy</option>
+          <option value="Not so easy">Not so easy</option>
+          <option value="Not easy at all">Not easy at all</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <p>
+            What features are the most valuable to you?
+          <span class="clue">(Check all that apply)</span>
+        </p>
+  
+        <label
+          ><input
+            name="prefer"
+            value="Custom integrations"
+            type="checkbox"
+            class="input-checkbox"
+          />Custom integrations</label
+        >
+        <label>
+          <input
+            name="prefer"
+            value="Design"
+            type="checkbox"
+            class="input-checkbox"
+          />Design</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="Great html code"
+            type="checkbox"
+            class="input-checkbox"
+          />Great html code</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="Easy navigation"
+            type="checkbox"
+            class="input-checkbox"
+          />Easy navigation</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="Various types of surveys"
+            type="checkbox"
+            class="input-checkbox"
+          />Various types of surveys</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="Custom responses"
+            type="checkbox"
+            class="input-checkbox"
+          />Custom responses</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="Chat room"
+            type="checkbox"
+            class="input-checkbox"
+          />Chat room</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="Support pages"
+            type="checkbox"
+            class="input-checkbox"
+          />Support pages</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="wiki"
+            type="checkbox"
+            class="input-checkbox"
+          />Wiki</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="forum"
+            type="checkbox"
+            class="input-checkbox"
+          />Forum</label
+        >
+        <label
+          ><input
+            name="prefer"
+            value="Great HTML & CSS codes"
+            type="checkbox"
+            class="input-checkbox"
+          />Great HTML & CSS codes</label
+        >
+      </div>
+  
+      <div class="form-group">
+        <p>If you could change just one thing about our product, what would it be?</p>
+        <textarea
+          id="comments"
+          class="input-textarea"
+          name="comment"
+          placeholder="Enter your comment here..."
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <p>Any comments or suggestions?</p>
+        <textarea
+          id="comments"
+          class="input-textarea"
+          name="comment"
+          placeholder="Enter your comment here..."
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" id="submit" class="submit-button">
+          Submit
+        </button>
+      </div>
+    </form>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </div>
+  
